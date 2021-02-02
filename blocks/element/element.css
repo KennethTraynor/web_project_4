@@ -1,0 +1,13 @@
+@import url(__image/element__image.css);
+@import url(__text/element__text.css);
+@import url(__heart/element__heart.css);
+
+.element {
+  border-radius: 10px;
+  max-width: 282px;
+  min-height: 361px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
