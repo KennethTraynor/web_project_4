@@ -1,0 +1,20 @@
+.edit-form__input {
+  box-sizing: border-box;
+  min-height: 27.26px;
+  margin: 0 0 29.74px 0;
+  padding: 0;
+  border: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 16.94px;
+  outline: none;
+  font-weight: 400;
+}
+
+.edit-form__input:last-of-type {
+  margin: 0 0 0 0;
+}
+
+.edit-form__input::placeholder {
+  color:rgba(0, 0, 0, 0.2)
+}

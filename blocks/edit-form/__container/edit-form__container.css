@@ -1,0 +1,8 @@
+.edit-form__container {
+  background-color: white;
+  padding: 34px 36px 36.51px 36px;
+  border-radius: 10px;
+  position: relative;
+  max-width: 430px;
+  width: 100%;
+}

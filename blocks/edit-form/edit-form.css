@@ -1,0 +1,18 @@
+@import url(__container/edit-form__container.css);
+@import url(__close-button/edit-form__close-button.css);
+@import url(__form/edit-form__form.css);
+@import url(__header/edit-form__header.css);
+@import url(__submit/edit-form__submit.css);
+@import url(__input/edit-form__input.css);
+
+.edit-form {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  padding: 34px 36px 36.51px 36px;
+  background-color: white;
+  border-radius: 10px;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 430px;
+}
