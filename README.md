@@ -1,16 +1,14 @@
 # Project 4: Around The U.S.
 
-This project
+This website focused on integrating javascript into a webpage. In this case it was something simple, but it is a good example of how javascript can be used to make a website functional versus simply being visiually appealing.
 
 ## Functionality
 
-* The CSS code will adjust the size of elements to better fit the resolution it is being displayed on
+* This website uses javascript to make the edit button and edit form functional, along with the like buttons being able to change their state
 
-* The elements that make up the website use less fixed values to allow the website to scale easier
+* The website also uses a responsive layout to make sure it works on smaller scales
 
 ## Technologies & Techniques
-
-This website focused on integrating javascript into a webpage. In this case it was something simple, but it is a good example of how javascript can be used to make a website functional versus simply being visiually appealing.
 
 **Technologies:**
 
