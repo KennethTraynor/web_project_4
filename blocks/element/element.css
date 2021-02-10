@@ -1,14 +1,14 @@
 @import url(__image/element__image.css);
 @import url(__text/element__text.css);
-@import url(__heart/element__heart.css);
+@import url(__like-button/element__like-button.css);
+@import url(__like-button/_active/element__like-button_active.css);
 
 .element {
-  margin: auto;
   border-radius: 10px;
-  max-width: 282px;
   min-height: 361px;
   background-color: white;
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: auto;
 }

@@ -38,3 +38,9 @@ function handleFormSubmit (evt) {
 
 
 formElement.addEventListener('submit', handleFormSubmit);
+
+document.querySelectorAll('.element__like-button').forEach(e => {
+  e.addEventListener('click', evt => {
+    evt.target.classList.toggle('element__like-button_active');
+  })
+});
