@@ -1,11 +1,11 @@
-const formElement = document.querySelector('.edit-form__form');
-const editButton = document.querySelector('.profile__edit-button');
-const closeButton = document.querySelector('.edit-form__close-button');
-const popup = document.querySelector('.popup');
-const profileName = document.querySelector('.profile__name');
-const profileAbout = document.querySelector('.profile__about');
-const nameInput = document.querySelector('.edit-form__input_type_name');
-const jobInput = document.querySelector('.edit-form__input_type_about');
+let formElement = document.querySelector('.edit-form__form');
+let editButton = document.querySelector('.profile__edit-button');
+let closeButton = document.querySelector('.edit-form__close-button');
+let popup = document.querySelector('.popup');
+let profileName = document.querySelector('.profile__name');
+let profileAbout = document.querySelector('.profile__about');
+let nameInput = document.querySelector('.edit-form__input_type_name');
+let jobInput = document.querySelector('.edit-form__input_type_about');
 
 
 function toggleEdit() {
@@ -38,6 +38,7 @@ function handleFormSubmit (evt) {
 
 
 formElement.addEventListener('submit', handleFormSubmit);
+
 
 document.querySelectorAll('.element__like-button').forEach(e => {
   e.addEventListener('click', evt => {
