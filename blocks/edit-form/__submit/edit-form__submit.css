@@ -1,7 +1,7 @@
 .edit-form__submit {
   padding: 0;
   margin: 48px 0 0 0;
-  min-height: 50.15px;
+  min-height: 50px;
   background-color: rgba(0, 0, 0, 1);
   color: white;
   outline: none;
@@ -15,4 +15,16 @@
 
 .edit-form__submit:hover {
   background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+@media screen and (max-width: 424px) {
+
+  .edit-form__submit {
+    min-height: 46px;
+    font-size: 14px;
+    line-height: 17px;
+    margin: 45px 0 0 0;
+  }
+
 }

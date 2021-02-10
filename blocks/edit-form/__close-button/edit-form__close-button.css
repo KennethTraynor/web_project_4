@@ -17,3 +17,13 @@
 .edit-form__close-button:hover {
   opacity: .6;
 }
+
+
+@media screen and (max-width: 525px) {
+
+  .edit-form__close-button {
+    top: -58px;
+    right: 5px;
+  }
+
+}

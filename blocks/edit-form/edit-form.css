@@ -6,13 +6,7 @@
 @import url(__input/edit-form__input.css);
 
 .edit-form {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  padding: 34px 36px 36.51px 36px;
-  background-color: white;
-  border-radius: 10px;
-  margin: auto;
-  box-sizing: border-box;
   max-width: 430px;
+  padding: 0 19px 0 19px;
+  margin: auto;
 }
