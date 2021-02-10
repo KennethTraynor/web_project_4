@@ -1,9 +1,9 @@
 .profile__add {
   margin-left: auto;
   padding: 0;
-  max-width: 150px;
+  min-width: 150px;
   min-height: 50px;
-  width: 100%;
+  width: 150px;
   background-color: transparent;
   background-image: url(../../../images/add-icon.svg);
   background-size: 22px;
@@ -24,7 +24,7 @@
 @media screen and (max-width: 1023px) {
 
   .profile__add {
-    max-width: 100%;
+    width: 100%;
     background-size: 16px;
   }
 
