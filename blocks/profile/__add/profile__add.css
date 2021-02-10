@@ -1,8 +1,9 @@
 .profile__add {
   margin-left: auto;
   padding: 0;
-  min-width: 150px;
+  max-width: 150px;
   min-height: 50px;
+  width: 100%;
   background-color: transparent;
   background-image: url(../../../images/add-icon.svg);
   background-size: 22px;
@@ -18,4 +19,13 @@
 
 .profile__add:hover {
   opacity: .6;
+}
+
+@media screen and (max-width: 1023px) {
+
+  .profile__add {
+    max-width: 100%;
+    background-size: 16px;
+  }
+
 }

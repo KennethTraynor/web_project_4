@@ -18,3 +18,14 @@
 .profile__edit-button:hover {
   opacity: .6;
 }
+
+@media screen and (max-width: 1023px) {
+
+  .profile__edit-button {
+    min-width: 18px;
+    min-height: 18px;
+    margin: 0 0 0 10px;
+    background-size: 7.5px;
+  }
+
+}

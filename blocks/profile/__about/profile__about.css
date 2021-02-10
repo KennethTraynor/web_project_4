@@ -7,3 +7,14 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+
+@media screen and (max-width: 1023px) {
+
+  .profile__about {
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+  }
+
+}
