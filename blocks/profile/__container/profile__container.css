@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: nowrap;
+  flex-grow: 0;
+  width: 100%;
 }
 
 @media screen and (max-width: 1023px) {
