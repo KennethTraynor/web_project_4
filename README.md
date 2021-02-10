@@ -1,6 +1,6 @@
 # Project 4: Around The U.S.
 
-This website focused on integrating javascript into a webpage. In this case it was something simple, but it is a good example of how javascript can be used to make a website functional versus simply being visiually appealing.
+This website focused on integrating javascript into a webpage. In this case it was something simple, but it is a good example of how javascript can be used to make a website functional versus simply being visually appealing.
 
 ## Functionality
 
