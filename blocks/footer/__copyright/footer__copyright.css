@@ -5,6 +5,9 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 
