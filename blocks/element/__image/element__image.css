@@ -1,4 +1,5 @@
 .element__image {
   max-width: 282px;
   width: 100%;
+  margin: 0 0 25px 0;
 }

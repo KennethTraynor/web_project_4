@@ -1,0 +1,4 @@
+.element__text-row {
+  display: flex;
+  flex-direction: row;
+}
