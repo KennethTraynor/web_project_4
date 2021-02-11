@@ -11,7 +11,3 @@
   align-items: center;
   justify-content: center;
 }
-
-.popup_opened {
-  display: flex;
-}
