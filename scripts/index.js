@@ -12,18 +12,20 @@ function toggleEdit() {
   popup.classList.toggle('popup_opened');
 }
 
+closeButton.addEventListener('click', toggleEdit);
 
-editButton.addEventListener('click', function(){
+
+function openForm(){
 
   nameInput.value = profileName.textContent;
   jobInput.value = profileAbout.textContent;
 
   toggleEdit();
 
-});
+};
 
 
-closeButton.addEventListener('click', toggleEdit);
+editButton.addEventListener('click', openForm);
 
 
 function handleFormSubmit (evt) {
