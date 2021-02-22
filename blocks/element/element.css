@@ -2,13 +2,17 @@
 @import url(__text-row/element__text-row.css);
 @import url(__text/element__text.css);
 @import url(__like-button/element__like-button.css);
+@import url(__delete-button/element__delete-button.css);
 @import url(__like-button/_active/element__like-button_active.css);
 
 .element {
   border-radius: 10px;
-  min-height: 361px;
+  min-width: 282px;
+  height: 361px;
   background-color: white;
   display: flex;
   flex-direction: column;
   margin: auto;
+  position: relative;
+  overflow: hidden;
 }

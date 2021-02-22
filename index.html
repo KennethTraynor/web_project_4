@@ -30,59 +30,12 @@
 
           </div>
 
-          <button aria-label="add" name="add" class="profile__add" type="button"></button>
+          <button aria-label="add" name="add" class="profile__add-button" type="button"></button>
         </div>
       </section>
 
       <section class="elements">
         <ul class="elements__container">
-          <li class="element">
-            <img src="images/card-yosemite.png" class="element__image" alt="An image of Yosemite Valley">
-            <div class="element__text-row">
-              <h2 class="element__text">Yosemite Valley</h2>
-              <button aria-label="like" name="like" class="element__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="images/card-louise.png" class="element__image" alt="An image of Lake Louise">
-            <div class="element__text-row">
-              <h2 class="element__text">Lake Louise</h2>
-              <button aria-label="like" name="like" class="element__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="images/card-bald.png" class="element__image" alt="An image of the Bald Mountains">
-            <div class="element__text-row">
-              <h2 class="element__text">Bald Mountains</h2>
-              <button aria-label="like" name="like" class="element__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="images/card-latemar.png" class="element__image" alt="An image of Latemar">
-            <div class="element__text-row">
-              <h2 class="element__text">Latemar</h2>
-              <button aria-label="like" name="like" class="element__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="images/card-vanoise.png" class="element__image" alt="An image of Vanoise National Park">
-            <div class="element__text-row">
-              <h2 class="element__text">Vanoise National Park</h2>
-              <button aria-label="like" name="like" class="element__like-button" type="button"></button>
-            </div>
-          </li>
-
-          <li class="element">
-            <img src="images/card-lago-di-braies.png" class="element__image" alt="An image of Lago di Braies">
-            <div class="element__text-row">
-              <h2 class="element__text">Lago di Braies</h2>
-              <button aria-label="like" name="like" class="element__like-button" type="button"></button>
-            </div>
-          </li>
 
         </ul>
 
@@ -90,12 +43,11 @@
 
     </main>
 
-
     <footer class="footer">
       <p class="footer__copyright">© 2020 Around The U.S.</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup_type_profile">
       <div class="popup__container">
 
         <button class="popup__close-button" aria-label="close" name="close" type="button" ></button>
@@ -114,7 +66,37 @@
       </div>
     </div>
 
+    <div class="popup popup_type_new-card">
+      <div class="popup__container">
+
+        <button class="popup__close-button" aria-label="close" name="close" type="button" ></button>
+
+        <div class="edit-form">
+
+          <h2 class="edit-form__header">New Place</h2>
+
+          <form action="#" class="edit-form__form" name="form">
+            <input type="text" name="title" class="edit-form__input edit-form__input_type_title" value="" required placeholder="Title">
+            <input type="url" name="url" class="edit-form__input edit-form__input_type_image-url" value="" required placeholder="Image URL">
+            <button class="edit-form__submit" aria-label="submit" name="submit" type="submit">Save</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
   </div>
+
+  <template id="card-template">
+    <li class="element">
+      <img src="" class="element__image" alt="">
+      <div class="element__text-row">
+        <button aria-label="delete" name="delete" class="element__delete-button" type="button"></button>
+        <h2 class="element__text"></h2>
+        <button aria-label="like" name="like" class="element__like-button" type="button"></button>
+      </div>
+    </li>
+  </template>
 
   <script src="scripts/index.js"></script>
 

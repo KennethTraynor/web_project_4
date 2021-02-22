@@ -2,7 +2,7 @@
 @import url(__close-button/popup__close-button.css);
 
 .popup {
-  display: none;
+  display: flex;
   background-color: rgba(0, 0, 0, 0.5);
   height: 100%;
   width: 100%;
@@ -11,4 +11,7 @@
   left: 0;
   align-items: center;
   justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.3s, opacity 0.3s linear;
 }
