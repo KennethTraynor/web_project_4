@@ -151,6 +151,21 @@ function handleCardCreate (evt) {
 
 }
 
+// Card Remove Button
+const onRemoveButtonClick = cardElement => { cardElement.remove();};
+
+// Card Like Button
+const onLikeButtonClick = evt => evt.target.classList.toggle('element__like-button_active');
+
+// Card Preview Open
+const onImagePreview = card => {
+  previewModalImage.src = card.link;
+  previewModalImage.alt = card.name;
+  previewModalCaption.textContent = card.name;
+
+  toggleModal(previewModal);
+};
+
 
 
 // Events
@@ -163,9 +178,6 @@ newCardModalCloseButton.addEventListener('click', () => toggleModal(newCardModal
 
 newCardModalFormElement.addEventListener('submit', handleCardCreate);
 
-const onRemoveButtonClick = cardElement => { cardElement.remove();};
-
-const onLikeButtonClick = evt => evt.target.classList.toggle('element__like-button_active');
 
 // Initilize Cards
 initialCards.forEach(card => appendCard(card, cardContainer));
@@ -183,10 +195,3 @@ profileModalFormElement.addEventListener('submit', handleProfileFormSubmit);
 // Preview Image Related
 previewModalCloseButton.addEventListener('click', () => toggleModal(previewModal));
 
-const onImagePreview = card => {
-  previewModalImage.src = card.link;
-  previewModalImage.alt = card.name;
-  previewModalCaption.textContent = card.name;
-
-  toggleModal(previewModal);
-};
