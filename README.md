@@ -4,7 +4,7 @@ This website focused on integrating javascript into a webpage. In this case it w
 
 ## Functionality
 
-* This website uses javascript to make the edit button and edit form functional, along with the like buttons being able to change their state
+* This website uses javascript to make buttons and forms functional
 
 * The website also uses a responsive layout to make sure it works on smaller scales
 
@@ -23,6 +23,8 @@ This website focused on integrating javascript into a webpage. In this case it w
 **Techniques:**
 
 * Javascript was used to add some functionality to the page, making it possible to edit values that otherwise would not be possible
+
+* Templates were used to make new cards using javascript by cloning the template and giving it new values
 
 * Flex and Grid layouts were used in order to shape the website
 
