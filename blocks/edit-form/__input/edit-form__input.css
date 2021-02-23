@@ -1,5 +1,5 @@
 .edit-form__input {
-  min-height: 27px;
+  min-height: 28px;
   margin: 0 0 30px 0;
   padding: 0;
   font-size: 14px;
@@ -8,7 +8,7 @@
   outline: none;
   border: 0px;
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #c4c4c4;
 }
 
 .edit-form__input:last-of-type {
@@ -16,5 +16,15 @@
 }
 
 .edit-form__input::placeholder {
-  color:rgba(0, 0, 0, 0.2);
+  color: #c4c4c4;
+}
+
+
+@media screen and (max-width: 424px) {
+
+  .edit-form__input {
+    font-size: 12px;
+    line-height: 15px;
+  }
+
 }

@@ -77,11 +77,22 @@
 
           <form action="#" class="edit-form__form" name="form">
             <input type="text" name="title" class="edit-form__input edit-form__input_type_title" value="" required placeholder="Title">
-            <input type="url" name="url" class="edit-form__input edit-form__input_type_image-url" value="" required placeholder="Image URL">
+            <input type="url" name="url" class="edit-form__input edit-form__input_type_image-url" value="" required placeholder="Image Link">
             <button class="edit-form__submit" aria-label="submit" name="submit" type="submit">Create</button>
           </form>
         </div>
 
+      </div>
+    </div>
+
+    <div class="popup popup_type_preview">
+      <div class="popup__container popup__container_preview">
+
+        <button class="popup__close-button" aria-label="close" name="close" type="button" ></button>
+        <div class="preview-image">
+          <img class="preview-image__image" src="" alt="">
+          <p class="preview-image__caption"></p>
+        </div>
       </div>
     </div>
 

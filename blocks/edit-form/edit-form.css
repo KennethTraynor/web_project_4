@@ -5,19 +5,21 @@
 
 .edit-form {
   display: flex;
-  position: relative;
   flex-direction: column;
-  background-color: white;
-  border-radius: 10px;
-  box-sizing: border-box;
+  margin: auto;
   padding: 34px 36px 36px 36px;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: white;
+  width: 100%;
 }
 
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 500px) {
 
   .edit-form {
-    padding: 25px 22px 25px 22px;
+    padding: 30px 20px 30px 20px;
   }
 
 }

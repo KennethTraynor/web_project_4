@@ -22,10 +22,10 @@
 @media screen and (max-width: 424px) {
 
   .edit-form__submit {
-    min-height: 46px;
+    min-height: 40px;
     font-size: 14px;
     line-height: 17px;
-    margin: 45px 0 0 0;
+    margin: 36px 0 0 0;
   }
 
 }
