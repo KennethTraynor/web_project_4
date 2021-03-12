@@ -12,9 +12,9 @@ const profileModal = document.querySelector('.popup_type_profile');
 const profileModalCloseButton = profileModal.querySelector('.popup__close-button');
 
 // Form
-const profileModalFormElement = profileModal.querySelector('.edit-form__form');
-const profileModalFormName = profileModal.querySelector('.edit-form__input_type_name');
-const profleModalAbout = profileModal.querySelector('.edit-form__input_type_about');
+const profileModalFormElement = profileModal.querySelector('.popup__form');
+const profileModalFormName = profileModal.querySelector('.popup__input_type_name');
+const profleModalAbout = profileModal.querySelector('.popup__input_type_about');
 
 
 
@@ -23,6 +23,32 @@ const profleModalAbout = profileModal.querySelector('.edit-form__input_type_abou
 // Cards
 const cardContainer = document.querySelector('.elements__container');
 const cardTemplate = document.querySelector('#card-template').content;
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg"
+  }
+];
 
 // Button
 const newCardAddButton = document.querySelector('.profile__add-button');
@@ -30,9 +56,9 @@ const newCardAddButton = document.querySelector('.profile__add-button');
 // Modal
 const newCardModal = document.querySelector('.popup_type_new-card');
 const newCardModalCloseButton = newCardModal.querySelector('.popup__close-button');
-const newCardModalFormElement = newCardModal.querySelector('.edit-form__form');
-const newCardModalFormTitle = newCardModal.querySelector('.edit-form__input_type_title');
-const newCardModalImageUrl = newCardModal.querySelector('.edit-form__input_type_image-url');
+const newCardModalFormElement = newCardModal.querySelector('.popup__form');
+const newCardModalFormTitle = newCardModal.querySelector('.popup__input_type_title');
+const newCardModalImageUrl = newCardModal.querySelector('.popup__input_type_image-url');
 
 
 
@@ -44,13 +70,35 @@ const previewModalCloseButton = previewModal.querySelector('.popup__close-button
 const previewModalImage = previewModal.querySelector('.preview-image__image');
 const previewModalCaption = previewModal.querySelector('.preview-image__caption');
 
-
-
 // Functions
 
+
+const handleBackgroundClose = (evt) => {
+  if (evt.target.classList.contains('popup')){
+    toggleModal(evt.target);
+  }
+}
+
+const handleModalKeyDown = (evt) => {
+  if(evt.key === "Escape"){
+    toggleModal(document.querySelector('.popup_opened'));
+  }
+}
+
 // Toggle a modal window
-function toggleModal(modalWindow) {
+const toggleModal = (modalWindow) => {
+  setModalButtonState(modalWindow);
   modalWindow.classList.toggle('popup_opened');
+
+  if (modalWindow.classList.contains('popup_opened')) {
+    modalWindow.addEventListener('click', handleBackgroundClose);
+    document.addEventListener('keydown', handleModalKeyDown);
+  } else {
+    modalWindow.removeEventListener('click', handleBackgroundClose);
+    document.removeEventListener('keydown', handleModalKeyDown);
+  }
+
+
 }
 
 // Open Profile Modal and Fill values
@@ -163,7 +211,6 @@ profileModalCloseButton.addEventListener('click', () => toggleModal(profileModal
 profileEditButton.addEventListener('click', openProfileModal);
 
 profileModalFormElement.addEventListener('submit', handleProfileFormSubmit);
-
 
 
 // Preview Image Related
