@@ -1,3 +1,11 @@
+/*
+This one is strange because the figma file has no indicator for what the error message should look like in mobile resolutions.
+
+It does however look like it is normally using absolute positioning, but that will not work when the resolution is smaller,
+because it will runs out of space for the text
+
+*/
+
 .popup__error {
   color: #FF0000;
   font-size: 12px;

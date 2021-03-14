@@ -91,26 +91,22 @@ const toggleModal = (modalWindow) => {
 
   if (!modalWindow.classList.contains('popup_opened')) {
 
-    // Add opened class, remove closed class
     modalWindow.classList.add('popup_opened');
     modalWindow.classList.remove('popup_closed');
 
     // Reevaluate forms if it has any
     if(modalWindow.querySelector('popup__form') !== undefined){
-      const forms = modalWindow.querySelectorAll('popup__form');
+      const forms = Array.from(modalWindow.querySelectorAll('.popup__form'));
       forms.forEach((form) => reevaluateValidity(form));
     }
 
-    // Add event listeners for closing
     modalWindow.addEventListener('click', handleBackgroundClose);
     document.addEventListener('keydown', handleModalKeyDown);
   } else {
 
-    // Add closed class, remove opened class
     modalWindow.classList.add('popup_closed');
     modalWindow.classList.remove('popup_opened');
 
-    // Remove event listeners for closing
     modalWindow.removeEventListener('click', handleBackgroundClose);
     document.removeEventListener('keydown', handleModalKeyDown);
   }

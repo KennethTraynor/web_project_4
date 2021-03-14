@@ -33,6 +33,7 @@ function toggleButtonState(inputs, button, {inactiveButtonClass, ...rest}) {
   }
 }
 
+// Browsers seem to display their own error message when the input is required, can't seem to prevent it
 // Initializes validation for all forms
 function enableValidation({formSelector, inputSelector, submitButtonSelector, ...rest}) {
   const forms = Array.from(document.querySelectorAll(formSelector));
@@ -62,6 +63,33 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, ..
   })
 }
 
+// Unsure if it is correct to store the selectors inside a const for this function,
+// becuase for enableValidation is a part of the function call
+// This was the only way I could think of reevaluating the form when it is opened
+
+// Reevaluate form validity when form is opened
+function reevaluateValidity(form) {
+
+  const inputs = Array.from(form.querySelectorAll(".popup__input"));
+  const button = form.querySelector(".popup__button");
+  const selectors = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__button",
+    inactiveButtonClass: "popup__button_disabled",
+    inputErrorClass: "popup__input_type_error",
+    errorClass: "popup__error_visible"
+  }
+
+  // Set button state
+  toggleButtonState(inputs, button, selectors)
+
+  // Reset error messages
+  inputs.forEach((input) => {
+    hideErrorMessage(input, form, selectors)
+  })
+}
+
 
 enableValidation({
   formSelector: ".popup__form",
@@ -72,31 +100,3 @@ enableValidation({
   errorClass: "popup__error_visible"
 });
 
-
-// Reevaluate form validity when form is opened
-function reevaluateValidity(modalWindow) {
-
-  const form = modalWindow.querySelector(".popup__form");
-  const inputs = Array.from(form.querySelectorAll(".popup__input"));
-  const button = form.querySelector(".popup__button");
-
-  toggleButtonState(inputs, button, {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible"
-  })
-
-  inputs.forEach((input) => {
-    hideErrorMessage(input, form, {
-      formSelector: ".popup__form",
-      inputSelector: ".popup__input",
-      submitButtonSelector: ".popup__button",
-      inactiveButtonClass: "popup__button_disabled",
-      inputErrorClass: "popup__input_type_error",
-      errorClass: "popup__error_visible"
-    })
-  })
-}
