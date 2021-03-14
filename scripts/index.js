@@ -72,13 +72,14 @@ const previewModalCaption = previewModal.querySelector('.preview-image__caption'
 
 // Functions
 
-
+// Toggles clicked modal
 const handleBackgroundClose = (evt) => {
   if (evt.target.classList.contains('popup')){
     toggleModal(evt.target);
   }
 }
 
+// Toggles opened modal
 const handleModalKeyDown = (evt) => {
   if(evt.key === "Escape"){
     toggleModal(document.querySelector('.popup_opened'));
@@ -87,16 +88,29 @@ const handleModalKeyDown = (evt) => {
 
 // Toggle a modal window
 const toggleModal = (modalWindow) => {
-  modalWindow.classList.toggle('popup_opened');
 
-  // Add and remove event listeners, reevaluate form
-  if (modalWindow.classList.contains('popup_opened')) {
+  if (!modalWindow.classList.contains('popup_opened')) {
+
+    // Add opened class, remove closed class
+    modalWindow.classList.add('popup_opened');
+    modalWindow.classList.remove('popup_closed');
+
+    // Reevaluate forms if it has any
     if(modalWindow.querySelector('popup__form') !== undefined){
-      reevaluateValidity(modalWindow);
+      const forms = modalWindow.querySelectorAll('popup__form');
+      forms.forEach((form) => reevaluateValidity(form));
     }
+
+    // Add event listeners for closing
     modalWindow.addEventListener('click', handleBackgroundClose);
     document.addEventListener('keydown', handleModalKeyDown);
   } else {
+
+    // Add closed class, remove opened class
+    modalWindow.classList.add('popup_closed');
+    modalWindow.classList.remove('popup_opened');
+
+    // Remove event listeners for closing
     modalWindow.removeEventListener('click', handleBackgroundClose);
     document.removeEventListener('keydown', handleModalKeyDown);
   }
