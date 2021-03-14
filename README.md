@@ -8,6 +8,8 @@ This website focused on integrating javascript into a webpage. In this case it w
 
 * The website also uses a responsive layout to make sure it works on smaller scales
 
+* Added form validation to make sure users do not get confused when inputting data
+
 ## Technologies & Techniques
 
 **Technologies:**
@@ -22,7 +24,7 @@ This website focused on integrating javascript into a webpage. In this case it w
 
 **Techniques:**
 
-* Javascript was used to add some functionality to the page, making it possible to edit values that otherwise would not be possible
+* Javascript was used to add some functionality to the page, making it possible to edit values and validate form inputs
 
 * Templates were used to make new cards using javascript by cloning the template and giving it new values
 
