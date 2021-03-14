@@ -1,3 +1,4 @@
+// Shows error message
 function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}){
   const error = document.querySelector('#' + input.id + '-error');
   error.textContent = input.validationMessage;
@@ -5,7 +6,7 @@ function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}){
   input.classList.add(inputErrorClass);
 }
 
-
+// Hides error message
 function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}){
   const error = document.querySelector('#' + input.id + '-error');
   error.textContent = '';
@@ -13,7 +14,7 @@ function hideErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}){
   input.classList.remove(inputErrorClass);
 }
 
-
+// Checks if an input is valid
 function checkInputValidity(input, form, rest) {
   if(input.validity.valid) {
     hideErrorMessage(input, form, rest);
@@ -22,30 +23,33 @@ function checkInputValidity(input, form, rest) {
   }
 }
 
-
+// Controls the buttons active state based on all input valid states
 function toggleButtonState(inputs, button, {inactiveButtonClass, ...rest}) {
-  const isValid = inputs.every((input) => input.validity.valid);
-
+  const isValid = inputs.every(input => input.validity.valid);
   if(isValid) {
     button.classList.remove(inactiveButtonClass);
-    button.disabled = false;
   } else {
     button.classList.add(inactiveButtonClass);
-    button.disabled = true;
   }
 }
 
-
+// Initializes validation for all forms
 function enableValidation({formSelector, inputSelector, submitButtonSelector, ...rest}) {
-  const forms = [...document.querySelectorAll(formSelector)];
+  const forms = Array.from(document.querySelectorAll(formSelector));
 
   forms.forEach((form) => {
     form.addEventListener('submit', ((e) => {
       e.preventDefault();
     }))
 
-    const inputs = [...form.querySelectorAll(inputSelector)];
+    const inputs = Array.from(form.querySelectorAll(inputSelector));
     const button = form.querySelector(submitButtonSelector);
+
+    button.addEventListener('click', (e) => {
+      inputs.forEach((input) => {
+        checkInputValidity(input, form, rest);
+      })
+    })
 
     toggleButtonState(inputs, button, rest);
 
@@ -69,12 +73,12 @@ enableValidation({
 });
 
 
-// Fix this code
+// Reevaluate form validity when form is opened
+function reevaluateValidity(modalWindow) {
 
-function setModalButtonState(modalWindow) {
-
-  const inputs = [...modalWindow.querySelectorAll(".popup__input")];
-  const button = modalWindow.querySelector(".popup__button");
+  const form = modalWindow.querySelector(".popup__form");
+  const inputs = Array.from(form.querySelectorAll(".popup__input"));
+  const button = form.querySelector(".popup__button");
 
   toggleButtonState(inputs, button, {
     formSelector: ".popup__form",
@@ -85,9 +89,8 @@ function setModalButtonState(modalWindow) {
     errorClass: "popup__error_visible"
   })
 
-
   inputs.forEach((input) => {
-    hideErrorMessage(input, modalWindow, {
+    hideErrorMessage(input, form, {
       formSelector: ".popup__form",
       inputSelector: ".popup__input",
       submitButtonSelector: ".popup__button",
@@ -96,5 +99,4 @@ function setModalButtonState(modalWindow) {
       errorClass: "popup__error_visible"
     })
   })
-
 }

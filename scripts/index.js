@@ -13,8 +13,8 @@ const profileModalCloseButton = profileModal.querySelector('.popup__close-button
 
 // Form
 const profileModalFormElement = profileModal.querySelector('.popup__form');
-const profileModalFormName = profileModal.querySelector('.popup__input_type_name');
-const profleModalAbout = profileModal.querySelector('.popup__input_type_about');
+const profileModalFormName = profileModalFormElement.querySelector('.popup__input_type_name');
+const profleModalAbout = profileModalFormElement.querySelector('.popup__input_type_about');
 
 
 
@@ -87,10 +87,13 @@ const handleModalKeyDown = (evt) => {
 
 // Toggle a modal window
 const toggleModal = (modalWindow) => {
-  setModalButtonState(modalWindow);
   modalWindow.classList.toggle('popup_opened');
 
+  // Add and remove event listeners, reevaluate form
   if (modalWindow.classList.contains('popup_opened')) {
+    if(modalWindow.querySelector('popup__form') !== undefined){
+      reevaluateValidity(modalWindow);
+    }
     modalWindow.addEventListener('click', handleBackgroundClose);
     document.addEventListener('keydown', handleModalKeyDown);
   } else {
