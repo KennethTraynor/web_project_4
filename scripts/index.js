@@ -77,7 +77,7 @@ const popups = Array.from(document.querySelectorAll('.popup'));
 
 // Functions
 
-// Toggles opened modal
+// Escape Key closes opened modal
 const handleModalKeyDown = (evt) => {
   if(evt.key === "Escape"){
     toggleModal(document.querySelector('.popup_opened'));

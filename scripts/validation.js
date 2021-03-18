@@ -85,5 +85,6 @@ function reevaluateValidity(form) {
   })
 }
 
+// Enable validation for forms
 enableValidation(selectors);
 
