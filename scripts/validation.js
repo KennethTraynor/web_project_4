@@ -42,7 +42,6 @@ function toggleButtonState(inputs, button, {inactiveButtonClass, ...rest}) {
   }
 }
 
-// Browsers seem to display their own error message when the input is required, can't seem to prevent it
 // Initializes validation for all forms
 function enableValidation({formSelector, inputSelector, submitButtonSelector, ...rest}) {
   const forms = Array.from(document.querySelectorAll(formSelector));
