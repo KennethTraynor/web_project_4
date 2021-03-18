@@ -207,11 +207,6 @@ profileEditButton.addEventListener('click', openProfileModal);
 
 profileModalFormElement.addEventListener('submit', handleProfileFormSubmit);
 
-
-// Preview Image Related
-previewModalCloseButton.addEventListener('click', () => toggleModal(previewModal));
-
-
 // Closing Popups (Background click, Cross button click)
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
