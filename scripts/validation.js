@@ -1,3 +1,12 @@
+const selectors = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+}
+
 // Shows error message
 function showErrorMessage(input, form, {errorClass, inputErrorClass, ...rest}){
   const error = document.querySelector('#' + input.id + '-error');
@@ -63,40 +72,18 @@ function enableValidation({formSelector, inputSelector, submitButtonSelector, ..
   })
 }
 
-// Unsure if it is correct to store the selectors inside a const for this function,
-// becuase for enableValidation is a part of the function call
-// This was the only way I could think of reevaluating the form when it is opened
-
 // Reevaluate form validity when form is opened
 function reevaluateValidity(form) {
 
-  const inputs = Array.from(form.querySelectorAll(".popup__input"));
-  const button = form.querySelector(".popup__button");
-  const selectors = {
-    formSelector: ".popup__form",
-    inputSelector: ".popup__input",
-    submitButtonSelector: ".popup__button",
-    inactiveButtonClass: "popup__button_disabled",
-    inputErrorClass: "popup__input_type_error",
-    errorClass: "popup__error_visible"
-  }
+  const inputs = Array.from(form.querySelectorAll(selectors.inputSelector));
+  const button = form.querySelector(selectors.submitButtonSelector);
 
-  // Set button state
-  toggleButtonState(inputs, button, selectors)
+  toggleButtonState(inputs, button, selectors);
 
-  // Reset error messages
   inputs.forEach((input) => {
-    hideErrorMessage(input, form, selectors)
+    hideErrorMessage(input, form, selectors);
   })
 }
 
-
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible"
-});
+enableValidation(selectors);
 

@@ -1,9 +1,0 @@
-/*
-  Ran into issues with having only the popup_opened class, causing the fadeout to happen when the page was first loaded.
-
-  It may also be possible to use keyframes, but this just seems simpler
-*/
-
-.popup_closed {
-  transition: visibility 0s 0.3s, opacity 0.3s linear;
-}

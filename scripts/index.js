@@ -16,8 +16,6 @@ const profileModalFormElement = profileModal.querySelector('.popup__form');
 const profileModalFormName = profileModalFormElement.querySelector('.popup__input_type_name');
 const profleModalAbout = profileModalFormElement.querySelector('.popup__input_type_about');
 
-
-
 // Card
 
 // Cards
@@ -70,14 +68,14 @@ const previewModalCloseButton = previewModal.querySelector('.popup__close-button
 const previewModalImage = previewModal.querySelector('.preview-image__image');
 const previewModalCaption = previewModal.querySelector('.preview-image__caption');
 
-// Functions
 
-// Toggles clicked modal
-const handleBackgroundClose = (evt) => {
-  if (evt.target.classList.contains('popup')){
-    toggleModal(evt.target);
-  }
-}
+// Popups
+
+const popups = Array.from(document.querySelectorAll('.popup'));
+
+
+
+// Functions
 
 // Toggles opened modal
 const handleModalKeyDown = (evt) => {
@@ -89,29 +87,14 @@ const handleModalKeyDown = (evt) => {
 // Toggle a modal window
 const toggleModal = (modalWindow) => {
 
-  if (!modalWindow.classList.contains('popup_opened')) {
+  modalWindow.classList.toggle('popup_opened');
 
-    modalWindow.classList.add('popup_opened');
-    modalWindow.classList.remove('popup_closed');
-
-    // Reevaluate forms if it has any
-    if(modalWindow.querySelector('popup__form') !== undefined){
-      const forms = Array.from(modalWindow.querySelectorAll('.popup__form'));
-      forms.forEach((form) => reevaluateValidity(form));
-    }
-
-    modalWindow.addEventListener('click', handleBackgroundClose);
+  if (modalWindow.classList.contains('popup_opened')) {
     document.addEventListener('keydown', handleModalKeyDown);
-  } else {
-
-    modalWindow.classList.add('popup_closed');
-    modalWindow.classList.remove('popup_opened');
-
-    modalWindow.removeEventListener('click', handleBackgroundClose);
+  }
+  else {
     document.removeEventListener('keydown', handleModalKeyDown);
   }
-
-
 }
 
 // Open Profile Modal and Fill values
@@ -119,6 +102,8 @@ function openProfileModal() {
 
   profileModalFormName.value = profileName.textContent;
   profleModalAbout.value = profileAbout.textContent;
+
+  reevaluateValidity(profileModalFormElement);
 
   toggleModal(profileModal);
 
@@ -140,6 +125,8 @@ function openCardModal() {
 
   newCardModalFormTitle.value = '';
   newCardModalImageUrl.value = '';
+
+  reevaluateValidity(newCardModalFormElement);
 
   toggleModal(newCardModal);
 
@@ -209,18 +196,13 @@ const onImagePreview = card => {
 // Card Related
 newCardAddButton.addEventListener('click', () => openCardModal());
 
-newCardModalCloseButton.addEventListener('click', () => toggleModal(newCardModal));
-
 newCardModalFormElement.addEventListener('submit', handleCardCreate);
-
 
 // Initilize Cards
 initialCards.forEach(card => appendCard(card, cardContainer));
 
 
 // Profile Edit Related
-profileModalCloseButton.addEventListener('click', () => toggleModal(profileModal));
-
 profileEditButton.addEventListener('click', openProfileModal);
 
 profileModalFormElement.addEventListener('submit', handleProfileFormSubmit);
@@ -229,3 +211,15 @@ profileModalFormElement.addEventListener('submit', handleProfileFormSubmit);
 // Preview Image Related
 previewModalCloseButton.addEventListener('click', () => toggleModal(previewModal));
 
+
+// Closing Popups (Background click, Cross button click)
+popups.forEach((popup) => {
+  popup.addEventListener('click', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      toggleModal(popup);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      toggleModal(popup);
+    }
+  })
+})
