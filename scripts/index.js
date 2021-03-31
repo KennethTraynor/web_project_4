@@ -1,26 +1,39 @@
-// Profile
+import FormValidator from './FormValidator.js';
+import Card from './Card.js';
 
-// Info
+const defaultConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+  inactiveButtonClass: "popup__button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible"
+};
+
+// Modals
+const profileModal = document.querySelector('.popup_type_profile');
+const newCardModal = document.querySelector('.popup_type_new-card');
+
+// Forms
+const profileForm = profileModal.querySelector('.popup__form');
+const newCardForm = newCardModal.querySelector('.popup__form');
+
+// Validators
+const profileFormValidator = new FormValidator(defaultConfig, profileForm);
+const newCardFormValidator = new FormValidator(defaultConfig, newCardForm);
+
+profileFormValidator.enableValidation();
+newCardFormValidator.enableValidation();
+
+// Profile Variables
 const profileName = document.querySelector('.profile__name');
 const profileAbout = document.querySelector('.profile__about');
-
-// Button
 const profileEditButton = document.querySelector('.profile__edit-button');
+const profileFormName = profileModal.querySelector('.popup__input_type_name');
+const profileFormAbout = profileModal.querySelector('.popup__input_type_about');
 
-// Modal
-const profileModal = document.querySelector('.popup_type_profile');
-const profileModalCloseButton = profileModal.querySelector('.popup__close-button');
-
-// Form
-const profileModalFormElement = profileModal.querySelector('.popup__form');
-const profileModalFormName = profileModalFormElement.querySelector('.popup__input_type_name');
-const profleModalAbout = profileModalFormElement.querySelector('.popup__input_type_about');
-
-// Card
-
-// Cards
-const cardContainer = document.querySelector('.elements__container');
-const cardTemplate = document.querySelector('#card-template').content;
+// Card Variables
+const cardWrapper = document.querySelector('.elements__container');
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -48,173 +61,79 @@ const initialCards = [
   }
 ];
 
-// Button
 const newCardAddButton = document.querySelector('.profile__add-button');
-
-// Modal
-const newCardModal = document.querySelector('.popup_type_new-card');
-const newCardModalCloseButton = newCardModal.querySelector('.popup__close-button');
-const newCardModalFormElement = newCardModal.querySelector('.popup__form');
-const newCardModalFormTitle = newCardModal.querySelector('.popup__input_type_title');
-const newCardModalImageUrl = newCardModal.querySelector('.popup__input_type_image-url');
-
-
-
-// Image Preview
-
-// Modal
-const previewModal = document.querySelector('.popup_type_preview');
-const previewModalCloseButton = previewModal.querySelector('.popup__close-button');
-const previewModalImage = previewModal.querySelector('.preview-image__image');
-const previewModalCaption = previewModal.querySelector('.preview-image__caption');
-
+const newCardFormTitle = newCardModal.querySelector('.popup__input_type_title');
+const newCardFormUrl = newCardModal.querySelector('.popup__input_type_image-url');
+const cardTemplateSelector = '#card-template';
 
 // Popups
-
 const popups = Array.from(document.querySelectorAll('.popup'));
 
-
+const handleModalKeyDown = (evt) => {
+  if(evt.key === "Escape"){
+    closeModalWindow(document.querySelector('.popup_opened'));
+  }
+}
 
 // Functions
 
-// Escape Key closes opened modal
-const handleModalKeyDown = (evt) => {
-  if(evt.key === "Escape"){
-    toggleModal(document.querySelector('.popup_opened'));
-  }
+const openModalWindow = (modalWindow) => {
+  modalWindow.classList.add('popup_opened');
+  document.addEventListener('keydown', handleModalKeyDown);
 }
 
-// Toggle a modal window
-const toggleModal = (modalWindow) => {
-
-  modalWindow.classList.toggle('popup_opened');
-
-  if (modalWindow.classList.contains('popup_opened')) {
-    document.addEventListener('keydown', handleModalKeyDown);
-  }
-  else {
-    document.removeEventListener('keydown', handleModalKeyDown);
-  }
+const closeModalWindow = (modalWindow) => {
+  modalWindow.classList.remove('popup_opened');
+  document.removeEventListener('keydown', handleModalKeyDown);
 }
 
-// Open Profile Modal and Fill values
-function openProfileModal() {
-
-  profileModalFormName.value = profileName.textContent;
-  profleModalAbout.value = profileAbout.textContent;
-
-  reevaluateValidity(profileModalFormElement);
-
-  toggleModal(profileModal);
-
+const openProfileModal = () => {
+  profileFormName.value = profileName.textContent;
+  profileFormAbout.value = profileAbout.textContent;
+  openModalWindow(profileModal);
 }
 
-// Profile Submit Handler
-function handleProfileFormSubmit (evt) {
+const openCardModal = () => {
+  newCardFormTitle.value = '';
+  newCardFormUrl.value = '';
+  openModalWindow(newCardModal);
+}
+
+const handleProfileFormSubmit = (evt) => {
   evt.preventDefault();
-
-  profileName.textContent = profileModalFormName.value;
-  profileAbout.textContent = profleModalAbout.value;
-
-  toggleModal(profileModal);
-
+  profileName.textContent = profileFormName.value;
+  profileAbout.textContent = profileFormAbout.value;
+  closeModalWindow(profileModal);
 }
 
-// Open Card Modal and Reset values
-function openCardModal() {
-
-  newCardModalFormTitle.value = '';
-  newCardModalImageUrl.value = '';
-
-  reevaluateValidity(newCardModalFormElement);
-
-  toggleModal(newCardModal);
-
+const appendCard = (data, wrapper) => {
+  const card = new Card(data, cardTemplateSelector);
+  wrapper.prepend(card.generateCard());
 }
 
-// Generate new card element
-function generateCardElement(card) {
-
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const cardImage = cardElement.querySelector('.element__image');
-  const cardTitle = cardElement.querySelector('.element__text');
-  const cardLikeButton = cardElement.querySelector('.element__like-button');
-  const cardDeleteButton = cardElement.querySelector('.element__delete-button');
-
-
-  cardImage.src = card.link;
-  cardImage.alt = card.name;
-  cardImage.addEventListener('click', () => onImagePreview(card));
-
-  cardTitle.textContent = card.name;
-
-  cardLikeButton.addEventListener('click', (evt) => onLikeButtonClick(evt));
-
-  cardDeleteButton.addEventListener('click', () => onRemoveButtonClick(cardElement));
-
-  return cardElement;
-
-}
-
-// Append Card
-function appendCard(card, wrapper){
-  wrapper.append(generateCardElement(card));
-}
-
-// Generate new card from submit
-function handleCardCreate (evt) {
+const handleCardCreate = (evt) => {
   evt.preventDefault();
-
-  const card = {name: newCardModalFormTitle.value, link: newCardModalImageUrl.value};
-
-  appendCard(card, cardContainer);
-
-  toggleModal(newCardModal);
-
+  const data = {name: newCardFormTitle.value, link: newCardFormUrl.value};
+  appendCard(data, cardWrapper);
+  closeModalWindow(newCardModal);
 }
 
-// Card Remove Button
-const onRemoveButtonClick = cardElement => { cardElement.remove();};
-
-// Card Like Button
-const onLikeButtonClick = evt => evt.target.classList.toggle('element__like-button_active');
-
-// Card Preview Open
-const onImagePreview = card => {
-  previewModalImage.src = card.link;
-  previewModalImage.alt = card.name;
-  previewModalCaption.textContent = card.name;
-
-  toggleModal(previewModal);
-};
-
-
-
-// Events
-
-
-// Card Related
 newCardAddButton.addEventListener('click', () => openCardModal());
-
-newCardModalFormElement.addEventListener('submit', handleCardCreate);
-
-// Initilize Cards
-initialCards.forEach(card => appendCard(card, cardContainer));
+newCardForm.addEventListener('submit', handleCardCreate);
 
 
-// Profile Edit Related
+initialCards.forEach(data => appendCard(data, cardWrapper));
+
 profileEditButton.addEventListener('click', openProfileModal);
+profileForm.addEventListener('submit', handleProfileFormSubmit);
 
-profileModalFormElement.addEventListener('submit', handleProfileFormSubmit);
-
-// Closing Popups (Background click, Cross button click)
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('popup_opened')) {
-      toggleModal(popup);
+      closeModalWindow(popup);
     }
     if (evt.target.classList.contains('popup__close-button')) {
-      toggleModal(popup);
+      closeModalWindow(popup);
     }
   })
 })
