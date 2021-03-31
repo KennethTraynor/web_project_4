@@ -118,11 +118,10 @@ const handleCardCreate = (evt) => {
   closeModalWindow(newCardModal);
 }
 
+// Events
+
 newCardAddButton.addEventListener('click', () => openCardModal());
 newCardForm.addEventListener('submit', handleCardCreate);
-
-
-initialCards.forEach(data => appendCard(data, cardWrapper));
 
 profileEditButton.addEventListener('click', openProfileModal);
 profileForm.addEventListener('submit', handleProfileFormSubmit);
@@ -137,3 +136,7 @@ popups.forEach((popup) => {
     }
   })
 })
+
+
+
+initialCards.forEach(data => appendCard(data, cardWrapper));
