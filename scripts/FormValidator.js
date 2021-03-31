@@ -60,6 +60,17 @@ class FormValidator {
     });
   }
 
+  recheckValiditiy() {
+    const inputs = Array.from(this._form.querySelectorAll(this._inputSelector));
+    const button = this._form.querySelector(this._submitButtonSelector);
+
+    this._toggleButtonState(inputs, button);
+
+    inputs.forEach((input) => {
+        this._hideInputError(input);
+    });
+  }
+
   enableValidation() {
 
     this._form.addEventListener('submit', (e) => {

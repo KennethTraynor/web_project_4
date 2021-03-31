@@ -90,12 +90,14 @@ const closeModalWindow = (modalWindow) => {
 const openProfileModal = () => {
   profileFormName.value = profileName.textContent;
   profileFormAbout.value = profileAbout.textContent;
+  profileFormValidator.recheckValiditiy();
   openModalWindow(profileModal);
 }
 
 const openCardModal = () => {
   newCardFormTitle.value = '';
   newCardFormUrl.value = '';
+  newCardFormValidator.recheckValiditiy()
   openModalWindow(newCardModal);
 }
 
