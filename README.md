@@ -34,6 +34,8 @@ This website focused on integrating javascript into a webpage. In this case it w
 
 * Made use of text-overflow for adding ellipsis to text that did not fit it's bounds
 
+* The website uses classes to separate code into its functional parts, there is no difference to what the end user sees, but the code is easier to maintain and the classes add modularity
+
 ___
 
 **Website:** _[Link to the website](https://kennethtraynor.github.io/web_project_4/index.html)_
