@@ -1,3 +1,6 @@
+import {openModalWindow, closeModalWindow} from "./utils.js";
+import {initialCards} from "./data.js";
+
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 
@@ -34,32 +37,6 @@ const profileFormAbout = profileModal.querySelector('.popup__input_type_about');
 
 // Card Variables
 const cardWrapper = document.querySelector('.elements__container');
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://code.s3.yandex.net/web-code/yosemite.jpg"
-  },
-  {
-    name: "Lake Louise",
-    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg"
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg"
-  },
-  {
-    name: "Latemar",
-    link: "https://code.s3.yandex.net/web-code/latemar.jpg"
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://code.s3.yandex.net/web-code/vanoise.jpg"
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://code.s3.yandex.net/web-code/lago.jpg"
-  }
-];
 
 const newCardAddButton = document.querySelector('.profile__add-button');
 const newCardFormTitle = newCardModal.querySelector('.popup__input_type_title');
@@ -69,23 +46,7 @@ const cardTemplateSelector = '#card-template';
 // Popups
 const popups = Array.from(document.querySelectorAll('.popup'));
 
-const handleModalKeyDown = (evt) => {
-  if(evt.key === "Escape"){
-    closeModalWindow(document.querySelector('.popup_opened'));
-  }
-}
-
 // Functions
-
-const openModalWindow = (modalWindow) => {
-  modalWindow.classList.add('popup_opened');
-  document.addEventListener('keydown', handleModalKeyDown);
-}
-
-const closeModalWindow = (modalWindow) => {
-  modalWindow.classList.remove('popup_opened');
-  document.removeEventListener('keydown', handleModalKeyDown);
-}
 
 const openProfileModal = () => {
   profileFormName.value = profileName.textContent;

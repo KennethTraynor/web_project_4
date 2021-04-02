@@ -1,3 +1,6 @@
+import {openModalWindow} from "./utils.js";
+
+
 const previewModal = document.querySelector('.popup_type_preview');
 const previewModalImage = previewModal.querySelector('.preview-image__image');
 const previewModalCaption = previewModal.querySelector('.preview-image__caption');
@@ -8,22 +11,6 @@ const onImagePreview = card => {
   previewModalCaption.textContent = card._name;
   openModalWindow(previewModal);
 };
-
-const handleModalKeyDown = (evt) => {
-  if(evt.key === "Escape"){
-    closeModalWindow(document.querySelector('.popup_opened'));
-  }
-}
-
-const openModalWindow = (modalWindow) => {
-  modalWindow.classList.add('popup_opened');
-  document.addEventListener('keydown', handleModalKeyDown);
-}
-
-const closeModalWindow = (modalWindow) => {
-  modalWindow.classList.remove('popup_opened');
-  document.removeEventListener('keydown', handleModalKeyDown);
-}
 
 class Card {
   constructor(data, templateSelector) {
@@ -43,6 +30,7 @@ class Card {
 
   _onRemoveButtonClick() {
     this._card.remove();
+    this._card = null;
   }
 
   _setEventListeners() {
