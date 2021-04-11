@@ -3,10 +3,13 @@ class Section {
     this._items = items;
     this._renderer = renderer;
     this._wrapper = document.querySelector(wrapperSelector);
+
   }
 
   renderer() {
-    this._renderer(this._items);
+    this._items.forEach((item) => {
+      this._renderer(item);
+    })
   }
 
   addItem(element) {
@@ -14,3 +17,5 @@ class Section {
   }
 
 }
+
+export default Section;
