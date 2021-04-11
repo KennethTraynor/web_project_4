@@ -1,15 +1,21 @@
 import {initialCards, defaultConfig} from "../utils/constants.js";
 
 import FormValidator from '../components/FormValidator.js';
-import Card from '../components/Card.js';
-
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
-const profilePopup = new PopupWithForm('.popup_type_profile');
+// Popups
+const profilePopup = new PopupWithForm('.popup_type_profile', () => {
+
+});
 profilePopup.setEventListeners();
 
-const newCardPopup = new PopupWithForm('.popup_type_new-card');
+// const section = new Section(..);
+
+const newCardPopup = new PopupWithForm('.popup_type_new-card', () => {
+  // const card = new Card(..);
+  // Selection.addItem(card.getView);
+});
 newCardPopup.setEventListeners();
 
 const imagePopup = new PopupWithImage('.popup_type_preview');
@@ -30,30 +36,10 @@ const newCardFormValidator = new FormValidator(defaultConfig, newCardForm);
 profileFormValidator.enableValidation();
 newCardFormValidator.enableValidation();
 
-
+// Profile Open Button
 const profileEditButton = document.querySelector('.profile__edit-button');
 profileEditButton.addEventListener('click', profilePopup.open);
 
+// Add Card Open Button
 const addCardButton = document.querySelector('.profile__add-button');
 addCardButton.addEventListener('click', newCardPopup.open);
-
-// Card Variables
-const cardWrapper = document.querySelector('.elements__container');
-
-// Functions
-
-const appendCard = (data, wrapper) => {
-  const card = new Card(
-    {
-      data: data,
-      handleCardClick: (name, link) => imagePopup.open(name, link)
-    },
-    '#card-template'
-  );
-  wrapper.prepend(card.generateCard());
-}
-
-
-initialCards.forEach((data) => {
-  appendCard(data, cardWrapper);
-});
