@@ -1,4 +1,4 @@
-# Project 4: Around The U.S.
+# Project 8: Around The U.S.
 
 This website focuses on integrating javascript into a webpage. It uses javascript to give the website important functionality and allow for more complex user interactions.
 
