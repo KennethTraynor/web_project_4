@@ -5,20 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Around The U.S.</title>
-  <link rel="stylesheet" href="pages/index.css">
 </head>
 
 <body class="body">
   <div class="page">
     <header class="header">
-      <img src="images/logo.svg" class="header__logo" alt="Around The U.S. logo">
+      <img src="<%=require('./images/logo.svg')%>" class="header__logo" alt="Around The U.S. logo">
     </header>
 
     <main class="content">
 
       <section class="profile">
         <div class="profile__container">
-          <img src="images/avatar.png" class="profile__avatar" alt="profile image">
+          <img src="<%=require('./images/avatar.png')%>" class="profile__avatar" alt="profile image">
 
           <div class="profile__info">
             <div class="profile__edit-container">
@@ -44,7 +43,7 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copyright">© 2020 Around The U.S.</p>
+      <p class="footer__copyright">© 2021 Around The U.S.</p>
     </footer>
 
     <div class="popup popup_type_profile">
@@ -112,8 +111,6 @@
       </div>
     </li>
   </template>
-
-  <script type="module" src="scripts/index.js" defer></script>
 
 </body>
 
