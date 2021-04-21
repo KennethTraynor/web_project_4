@@ -9,6 +9,8 @@
 @import url(__error/popup__error.css);
 @import url(__button/_disabled/popup__button_disabled.css);
 @import url(__field/popup__field.css);
+@import url(__button/_type/popup__button_type_confirm-delete.css);
+@import url(__title/_type/popup__title_type_confirm-delete.css);
 
 .popup {
   display: flex;
