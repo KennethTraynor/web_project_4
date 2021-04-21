@@ -17,7 +17,12 @@
 
       <section class="profile">
         <div class="profile__container">
-          <img src="<%=require('./images/avatar.png')%>" class="profile__avatar" alt="profile image">
+          <div class="profile__avatar-container">
+            <img src="<%=require('./images/avatar.png')%>" class="profile__avatar" alt="profile image">
+            <button class="profile__avatar-edit-button">
+              <img src="<%=require('./images/edit-icon.svg')%>" class="profile__avatar-edit-icon" draggable="false" alt="Edit Avatar Icon">
+            </button>
+          </div>
           <div class="profile__info">
             <div class="profile__edit-container">
               <h1 class="profile__name">Jacques Cousteau</h1>
@@ -72,6 +77,23 @@
         <h2 class="popup__title popup__title_type_confirm-delete">Are you sure?</h2>
         <form action="#" class="popup__form" name="form">
           <button class="popup__button popup__button_type_confirm-delete" aria-label="submit" name="submit" type="submit">Yes</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="popup popup_type_avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" aria-label="close" name="close" type="button" ></button>
+        <h2 class="popup__title">Change profile picture</h2>
+        <form action="#" class="popup__form" name="form">
+
+          <div class="popup__field">
+            <input id="card-url" type="url" name="url" class="popup__input popup__input_type_image-url" value="" placeholder="Image Link" required>
+            <span id="card-url-error" class="popup__error"></span>
+            </div>
+
+          <button class="popup__button" aria-label="submit" name="submit" type="submit">Save</button>
         </form>
 
       </div>

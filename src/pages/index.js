@@ -11,10 +11,12 @@ import UserInfo from '../components/UserInfo.js';
 // Modals
 const profileModal = document.querySelector('.popup_type_profile');
 const newCardModal = document.querySelector('.popup_type_new-card');
+const avatarModal = document.querySelector('.popup_type_avatar');
 
 // Forms
 const profileForm = profileModal.querySelector('.popup__form');
 const newCardForm = newCardModal.querySelector('.popup__form');
+const avatarForm = avatarModal.querySelector('.popup__form');
 const profileFormName = profileForm.querySelector('.popup__input_type_name');
 const profileFormAbout = profileForm.querySelector('.popup__input_type_about');
 
@@ -26,14 +28,17 @@ const profileEditButton = document.querySelector('.profile__edit-button');
 // Add Card Button
 const addCardButton = document.querySelector('.profile__add-button');
 
+// Avatar Edit Button
+const avatarEditButton = document.querySelector('.profile__avatar-edit-button');
 
 // Validators
 const profileFormValidator = new FormValidator(defaultConfig, profileForm);
 const newCardFormValidator = new FormValidator(defaultConfig, newCardForm);
+const avatarFormValidator = new FormValidator(defaultConfig, avatarForm);
 
 profileFormValidator.enableValidation();
 newCardFormValidator.enableValidation();
-
+avatarFormValidator.enableValidation();
 
 // UserInfo
 
@@ -80,6 +85,15 @@ const newCardPopup = new PopupWithForm('.popup_type_new-card', (values) => {
 
 newCardPopup.setEventListeners();
 
+// Avatar
+const avatarPopup = new PopupWithForm('.popup_type_avatar', (values) => {
+  console.log(values);
+  avatarPopup.close();
+});
+
+avatarPopup.setEventListeners();
+
+
 
 
 // Profile Open Button
@@ -98,3 +112,12 @@ addCardButton.addEventListener('click', () => {
   newCardFormValidator.recheckValiditiy();
   newCardPopup.open();
 });
+
+
+
+// Avatar edit Open Button
+avatarEditButton.addEventListener('click', () => {
+  avatarFormValidator.recheckValiditiy();
+  avatarPopup.open();
+});
+
