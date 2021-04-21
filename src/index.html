@@ -18,7 +18,6 @@
       <section class="profile">
         <div class="profile__container">
           <img src="<%=require('./images/avatar.png')%>" class="profile__avatar" alt="profile image">
-
           <div class="profile__info">
             <div class="profile__edit-container">
               <h1 class="profile__name">Jacques Cousteau</h1>
@@ -107,7 +106,10 @@
       <div class="element__text-row">
         <button aria-label="delete" name="delete" class="element__delete-button" type="button"></button>
         <h2 class="element__text"></h2>
-        <button aria-label="like" name="like" class="element__like-button" type="button"></button>
+        <div class="element__like-container">
+          <button aria-label="like" name="like" class="element__like-button" type="button"></button>
+          <p class="element__like-count">0</p>
+        </div>
       </div>
     </li>
   </template>
