@@ -7,6 +7,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
+import { loadImage } from "../utils/utils.js";
 
 // Modals
 const profileModal = document.querySelector('.popup_type_profile');
@@ -128,8 +129,11 @@ api.getUserInfo()
 
         // New Card
         const newCardPopup = new PopupWithForm('.popup_type_new-card', (values) => {
+
           newCardFormValidator.renderSaving(true);
-          api.addCard({ name: values.title, link: values.url })
+
+          loadImage(values.url)
+            .then(() => api.addCard({ name: values.title, link: values.url }))
             .then(res => {
               const card = new Card(
                 {
@@ -143,6 +147,7 @@ api.getUserInfo()
               section.addItem(card.generateCard({ userID: userInfo.getUserID() }));
 
             })
+            .catch(err => console.log(err))
             .finally(() => {
               newCardFormValidator.renderSaving(false);
               newCardPopup.close();
@@ -187,8 +192,10 @@ imagePopup.setEventListeners();
 // Avatar
 const avatarPopup = new PopupWithForm('.popup_type_avatar', (values) => {
   avatarFormValidator.renderSaving(true);
-  api.setUserAvatar({ avatar: values.url })
+  loadImage(values.url)
+    .then(() => api.setUserAvatar({ avatar: values.url }))
     .then(res => userInfo.setAvatar(res.avatar))
+    .catch(err => console.log(err))
     .finally(() => {
       avatarFormValidator.renderSaving(false);
       avatarPopup.close();

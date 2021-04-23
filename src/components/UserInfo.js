@@ -1,11 +1,13 @@
+import { loadImage } from "../utils/utils.js";
+
 class UserInfo {
-  constructor() {}
+  constructor() { }
 
   getUserInfo() {
-    return {name: this._name, about: this._about, id: this._id};
+    return { name: this._name, about: this._about, id: this._id };
   }
 
-  setUserID({_id}) {
+  setUserID({ _id }) {
     this._id = _id;
   }
 
@@ -14,11 +16,15 @@ class UserInfo {
   }
 
   setAvatar(avatar) {
-    document.querySelector('.profile__avatar').src = avatar;
-    this._avatar = avatar;
+    loadImage(avatar)
+      .then(img => {
+        document.querySelector('.profile__avatar').src = img.src;
+        this._avatar = avatar;
+      })
+      .catch(err => console.log(err))
   }
 
-  setProfileInfo({name, about}) {
+  setProfileInfo({ name, about }) {
     this._name = name;
     this._about = about;
     document.querySelector('.profile__name').textContent = this._name;

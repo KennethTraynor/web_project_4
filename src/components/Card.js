@@ -1,3 +1,5 @@
+import { loadImage } from "../utils/utils.js";
+
 class Card {
   constructor({ data, handleCardClick, handleDeleteClick, handleLikeClick }, templateSelector) {
     this._link = data.link;
@@ -65,15 +67,21 @@ class Card {
     }
   }
 
-
-
   generateCard({ userID }) {
     this._card = this._getCardTemplate().cloneNode(true);
     const cardImage = this._card.querySelector('.element__image');
     const cardTitle = this._card.querySelector('.element__text');
 
-    cardImage.src = this._link;
-    cardImage.alt = this._name;
+    loadImage(this._link)
+      .then(img => {
+        cardImage.src = img.src;
+        cardImage.alt = this._name;
+      })
+      .catch(err => {
+        console.log(err);
+        cardImage.alt = err;
+      });
+
     cardTitle.textContent = this._name;
 
     if (this._owner._id != userID) {
