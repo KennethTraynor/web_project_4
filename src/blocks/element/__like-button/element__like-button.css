@@ -12,9 +12,10 @@
   box-sizing: border-box;
   outline: transparent;
   cursor: pointer;
-  transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out, transform .3s ease-in-out;
 }
 
 .element__like-button:hover {
   opacity: .5;
+  transform: scale(1.2);
 }
