@@ -7,6 +7,7 @@ class FormValidator {
     this._submitButtonSelector = settings.submitButtonSelector;
     this._errorClass = settings.errorClass;
     this._form = formElement;
+    this._buttonDefaultText = this._form.querySelector(this._submitButtonSelector).textContent;
   }
 
   _showInputError(input) {
@@ -67,7 +68,7 @@ class FormValidator {
     this._toggleButtonState(inputs, button);
 
     inputs.forEach((input) => {
-        this._hideInputError(input);
+      this._hideInputError(input);
     });
   }
 
@@ -79,6 +80,18 @@ class FormValidator {
 
     this._setEventListeners();
 
+  }
+
+  renderSaving(isSaving) {
+    const submitButton = this._form.querySelector(this._submitButtonSelector);
+    if (isSaving) {
+      submitButton.textContent = "Saving...";
+      submitButton.disabled = true;
+    }
+    else {
+      submitButton.textContent = this._buttonDefaultText;
+      submitButton.disabled = false;
+    }
   }
 
 }
