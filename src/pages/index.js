@@ -99,6 +99,7 @@ api.getUserInfo()
       api.updateCardLike({ cardID, like: !isLiked });
     };
 
+
     // Initial Cards
     api.getInitialCards()
       .then((res) => {
@@ -115,7 +116,7 @@ api.getUserInfo()
                 },
                 '#card-template');
 
-              section.addItem(card.generateCard());
+              section.addItem(card.generateCard({ userID: userInfo.getUserID() }));
 
               card.initializeLikedState({ userID: userInfo.getUserID() });
 
@@ -139,7 +140,7 @@ api.getUserInfo()
                 },
                 '#card-template');
 
-              section.addItem(card.generateCard());
+              section.addItem(card.generateCard({ userID: userInfo.getUserID() }));
 
             })
             .finally(() => {
