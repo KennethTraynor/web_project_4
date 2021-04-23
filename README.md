@@ -36,6 +36,10 @@ This website focuses on integrating javascript into a webpage. It uses javascrip
 
 * The website uses classes to separate code into its functional parts, there is no difference to what the end user sees, but the code is easier to maintain and the classes add modularity
 
+* The website makes use of an Api, which allows data to be uploaded and loaded onto the page. It also allows for other users to load specific values onto their instance of the website
+
+* Fetch methods and promises are used in order to make code run asynchronously. Some examples are waiting for an image to load or waiting for a server response, while still being able to execute other code on the page.
+
 ___
 
 **Website:** _[Link to the website](https://kennethtraynor.github.io/web_project_4/index.html)_
