@@ -14,9 +14,6 @@ class Api {
         }
         return Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => {
-        console.log(err);
-      })
 
   }
 
@@ -29,9 +26,6 @@ class Api {
           return res.json();
         }
         return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err);
       })
   }
 
@@ -50,9 +44,6 @@ class Api {
         }
         return Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => {
-        console.log(err);
-      })
   }
 
   deleteCard({ cardID }) {
@@ -65,9 +56,6 @@ class Api {
           return res.json();
         }
         return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err);
       })
   }
 
@@ -84,9 +72,6 @@ class Api {
           return res.json();
         }
         return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err);
       })
 
   }
@@ -106,9 +91,6 @@ class Api {
         }
         return Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => {
-        console.log(err);
-      })
   }
 
   setUserAvatar({ avatar }) {
@@ -124,9 +106,6 @@ class Api {
           return res.json();
         }
         return Promise.reject(`Error: ${res.status}`);
-      })
-      .catch((err) => {
-        console.log(err);
       })
   }
 }

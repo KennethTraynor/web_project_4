@@ -22,35 +22,18 @@ class Card {
     return this._likes.some((likeID) => likeID == userID);
   }
 
-  initializeLikedState({ userID }) {
-    const isLiked = this.getLiked({ userID })
-    this._updateLikedState({ like: isLiked });
-  }
+  updateLiked({ userID, likes }) {
 
-  updateLikeID({ userID, like }) {
+    this._likes = likes.map(({ _id }) => _id);
 
-    if (like) {
-      this._likes.push(userID);
-    } else {
-      this._likes.pop(userID);
-    }
+    const like = this.getLiked({ userID });
 
-    this._updateLikedState({ like });
-
-  }
-
-  _updateLikedState({ like }) {
     if (like) {
       this._card.querySelector('.element__like-button').classList.add('element__like-button_active');
     } else {
       this._card.querySelector('.element__like-button').classList.remove('element__like-button_active');
     }
 
-    this._updateLikeCount();
-
-  }
-
-  _updateLikeCount() {
     this._card.querySelector('.element__like-count').textContent = (this._likes.length).toString();
   }
 
@@ -84,7 +67,7 @@ class Card {
 
     cardTitle.textContent = this._name;
 
-    if (this._owner._id != userID) {
+    if (this._owner._id !== userID) {
       this._card.querySelector('.element__delete-button').remove();
     }
 
