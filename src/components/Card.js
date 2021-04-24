@@ -60,9 +60,7 @@ class Card {
         cardImage.src = img.src;
         cardImage.alt = this._name;
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
 
     cardTitle.textContent = this._name;
 
