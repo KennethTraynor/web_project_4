@@ -46,6 +46,7 @@ avatarFormValidator.enableValidation();
 confirmFormValidator.enableValidation();
 
 
+
 let currentCardID;
 let currentCardElement;
 
@@ -72,13 +73,11 @@ const api = new Api({
   }
 });
 
-
 // User Info
 const userInfo = new UserInfo();
 
-// User Info Promise
 api.getUserInfo()
-  .then(res => {
+  .then((res) => {
     userInfo.setProfileInfo(res);
     userInfo.setUserID(res);
     userInfo.setAvatar(res.avatar);
@@ -124,7 +123,6 @@ api.getUserInfo()
     section.renderer();
 
 
-
     // New Card
     const newCardPopup = new PopupWithForm('.popup_type_new-card', (values) => {
 
@@ -152,7 +150,7 @@ api.getUserInfo()
     });
 
   })
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 
 

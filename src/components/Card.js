@@ -62,7 +62,7 @@ class Card {
       })
       .catch(err => {
         console.log(err);
-        cardImage.alt = err;
+        cardImage.alt = '';
       });
 
     cardTitle.textContent = this._name;
