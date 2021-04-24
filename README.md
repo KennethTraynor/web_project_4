@@ -42,5 +42,5 @@ This website focuses on integrating javascript into a webpage. It uses javascrip
 
 ___
 
-**Website:** _[Link to the website](https://kennethtraynor.github.io/web_project_4/index.html)_
+**Website:** _[Link to the website](https://kennethtraynor.github.io/web_project_4/)_
 ___
